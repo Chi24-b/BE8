@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Tree {
 
-	 public Node root; // node gốc của cây
+	    Node root; // node gốc của cây
 
 	    public Tree(Node root) {
 	        this.root = root;
@@ -16,23 +16,27 @@ public class Tree {
 	            return null;
 	        }
 
-	        ArrayList<Node> queue = new ArrayList<Node>();
-	        queue.add(root);
+	        ArrayList<Node> list= new ArrayList<Node>();
+	        list.add(root);
+			int index = 0;
 
-	        while (queue.size() > 0) {
-	            Node current = queue.remove(0);
+	        while (list.size() > index) {
+	            Node current = list.get(index);
+				index++;
 
 	            if (current.value == targetValue) {
 	                return current;
 	            }
 
-	            for (Node child : current.children) {
-	                queue.add(child);
+	            for (int i = 0; i < current.children.size(); i++) {
+	                list.add(current.children.get(i));
 	            }
-	        }
+			}
+	        
 
-	        return null;
-	    }
+	            return null;
+			}
+	        
 
 	    // Tìm node theo DFS (đệ quy duyệt theo nhánh)
 	    public Node findNodeDFS(Node current, int targetValue) {
@@ -52,7 +56,6 @@ public class Tree {
 	        }
 
 	        return null;
-	    }
 	}
 
 	
